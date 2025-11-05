@@ -152,7 +152,7 @@ end main
 
 ### Ejercicio 3: Algoritmo de Euclides (MCD)
 
-**Objetivo:** Calcular el máximo común divisor usando el algoritmo de restas de Euclides.
+**Objetivo:** Calcular el máximo común divisor de dos números a y b según el algoritmo de restas de Euclides.
 
 **Código de alto nivel:**
 ```c
@@ -216,7 +216,9 @@ end main
 
 ### Ejercicio 4: Programa con WHILE e IF-SWAP
 
-**Objetivo:** Traducir un programa que combina bucle WHILE, condicional IF y operación SWAP.
+**Objetivo:** Traduce el siguiente programa escrito en un lenguaje de alto nivel a lenguaje ensamblador. La
+órden swap(a, b) intercambia los valores de las variables a y b.
+
 
 **Código de alto nivel:**
 ```c
