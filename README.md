@@ -309,7 +309,7 @@ end main
 
 ## 👨‍💻 Autor
 
-**Rebolledo Allison**
+**Rebolledo Tello Allison Elena**
 
 ---
 
