@@ -5,7 +5,7 @@
 
 ## 📋 Descripción
 
-Este repositorio corresponde al **Producto Académico 2** del curso **Arquitectura del Computador**. Contiene el desarrollo de ejercicios prácticos que traducen estructuras de control de alto nivel a **lenguaje ensamblador x86**.
+Este repositorio corresponde al Producto Académico 2 del curso Arquitectura del Computador. Contiene ejercicios prácticos que traducen estructuras de control escritas en seudocódigo al lenguaje ensamblador x86.
 
 ---
 
@@ -24,7 +24,7 @@ Este repositorio corresponde al **Producto Académico 2** del curso **Arquitectu
 
 **Objetivo:** Traducir una estructura condicional IF-THEN-ELSE a lenguaje ensamblador.
 
-**Código de alto nivel:**
+**Seudocódigo:**
 ```c
 if (x >= y) {
     x = x + 2;
@@ -40,45 +40,40 @@ if (x >= y) {
 .model small
 .stack
 .data
-x db 5       ; valor inicial de x
-y db 3       ; valor inicial de y
-
+    msg db "Estructura IF-THEN-ELSE"
 .code
-main proc
-    ; Inicializa el segmento de datos
-    mov ax, @data
-    mov ds, ax
 
-    ; Carga x en AL para comparar
-    mov al, x
-    cmp al, y          ; compara x con y (x - y)
-    jl else_part       ; si x < y → salta a la parte ELSE
+main PROC
+    ; Valores iniciales
+    mov ax, 5       ; x = 5
+    mov bx, 3       ; y = 3
 
-    ; --- THEN (x >= y) ---
-    mov al, x
-    add al, 2          ; x = x + 2
-    mov x, al
+    ; Comparar x con y
+    cmp ax, bx
+    jl BLOQUE_ELSE      ; Si x < y, salta a BLOQUE_ELSE
 
-    mov al, y
-    add al, 2          ; y = y + 2
-    mov y, al
-    jmp fin_if         ; salta al final del IF
 
-else_part:
-    ; --- ELSE ---
-    mov al, x
-    sub al, 2          ; x = x - 2
-    mov x, al
+; THEN: x >= y
 
-    mov al, y
-    sub al, 2          ; y = y - 2
-    mov y, al
+    add ax, 2       ; x = x + 2
+    add bx, 2       ; y = y + 2
+    jmp FIN_IF       ; Salta al final del IF
 
-fin_if:
-    mov ah, 4Ch        ; fin del programa
-    int 21h
-main endp
+
+; ELSE: x < y
+
+BLOQUE_ELSE:
+    sub ax, 2       ; x = x - 2
+    sub bx, 2       ; y = y - 2
+
+
+; Fin del programa
+
+FIN_IF:
+    .exit
+main ENDP
 end main
+
 ```
 
 ---
@@ -87,7 +82,7 @@ end main
 
 **Objetivo:** Implementar un bucle WHILE para calcular la secuencia de Fibonacci.
 
-**Código de alto nivel:**
+**Seudocódigo:**
 ```c
 n = 5; 
 fant = 1; 
@@ -106,44 +101,47 @@ while (i <= n) {
 .model small
 .stack
 .data
-n db 5         ; límite del bucle
-fant db 1      ; valor anterior
-f db 1         ; valor actual
-i db 2         ; contador
-faux db ?      ; variable temporal
+n db 5          ; limite del bucle
+fant db 1       ; valor anterior
+f db 1          ; valor actual
+i db 1          ; contador (inicializado en 1)
+faux db ?       ; variable temporal
 
 .code
 main proc
     mov ax, @data
     mov ds, ax
-
-; --- WHILE (i <= n) ---
+    
+    ; --- WHILE (i <= n) ---
 while_start:
-    mov al, i
-    cmp al, n
-    ja fin_while        ; si i > n → salir del bucle
-
+    mov al, i       ; cargar i en al
+    cmp al, n       ; comparar i con n
+    ja fin_while    ; si i > n, salir del bucle
+    
     ; faux = f
     mov al, f
     mov faux, al
-
+    
     ; f = f + fant
     mov al, f
     add al, fant
     mov f, al
-
+    
     ; fant = faux
     mov al, faux
     mov fant, al
-
+    
     ; i = i + 1
-    inc i
-
-    jmp while_start     ; volver a comprobar la condición
-
+    mov al, i       ; cargar i
+    inc al          ; incrementar
+    mov i, al       ; guardar de vuelta
+    
+    jmp while_start ; volver a comprobar
+    
 fin_while:
-    mov ah, 4Ch         ; finalizar el programa
+    mov ah, 4Ch     ; finalizar el programa
     int 21h
+    
 main endp
 end main
 ```
@@ -154,7 +152,7 @@ end main
 
 **Objetivo:** Calcular el máximo común divisor de dos números a y b según el algoritmo de restas de Euclides.
 
-**Código de alto nivel:**
+**Seudocódigo:**
 ```c
 int a = 5, b = 15, mcd; 
 while (a != b) { 
@@ -171,9 +169,9 @@ mcd = a;
 .model small
 .stack
 .data
-a db 5        ; primer número
-b db 15       ; segundo número
-mcd db ?      ; resultado del máximo común divisor
+a db 5        ; primer numero
+b db 15       ; segundo numero
+mcd db ?      ; resultado del maximo comun divisor
 
 .code
 main proc
@@ -192,7 +190,7 @@ while_mcd:
     mov al, b
     sub al, a           ; b = b - a
     mov b, al
-    jmp while_mcd       ; volver a comprobar la condición
+    jmp while_mcd       ; volver a comprobar la condicion
 
 ; --- IF (a > b) ---
 a_mayor:
@@ -220,7 +218,7 @@ end main
 órden swap(a, b) intercambia los valores de las variables a y b.
 
 
-**Código de alto nivel:**
+**Seudocódigo:**
 ```c
 int a = 13, b = 16;
 while (a > 10) {
