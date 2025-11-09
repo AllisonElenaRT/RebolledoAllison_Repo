@@ -307,7 +307,9 @@ end main
 
 ## 👨‍💻 Autor
 
-**Rebolledo Tello Allison Elena**
+**Rebolledo Tello Allison Elena** ,
+- Estudiante de Ingeniería de Sistemas e Informática
+- Universidad Continental
 
 ---
 
