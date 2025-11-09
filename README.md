@@ -24,7 +24,7 @@ Este repositorio corresponde al Producto Académico 2 del curso Arquitectura del
 
 **Objetivo:** Traducir una estructura condicional IF-THEN-ELSE a lenguaje ensamblador.
 
-**Seudocódigo:**
+**Pseudocódigo:**
 ```c
 if (x >= y) {
     x = x + 2;
@@ -82,7 +82,7 @@ end main
 
 **Objetivo:** Implementar un bucle WHILE para calcular la secuencia de Fibonacci.
 
-**Seudocódigo:**
+**Pseudocódigo:**
 ```c
 n = 5; 
 fant = 1; 
@@ -152,7 +152,7 @@ end main
 
 **Objetivo:** Calcular el máximo común divisor de dos números a y b según el algoritmo de restas de Euclides.
 
-**Seudocódigo:**
+**Pseudocódigo:**
 ```c
 int a = 5, b = 15, mcd; 
 while (a != b) { 
@@ -218,7 +218,7 @@ end main
 órden swap(a, b) intercambia los valores de las variables a y b.
 
 
-**Seudocódigo:**
+**Pseudocódigo:**
 ```c
 int a = 13, b = 16;
 while (a > 10) {
